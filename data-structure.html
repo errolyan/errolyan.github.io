@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据结构专栏 - Errol's Blog</title>
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
+    <style>
+        .category-banner {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .category-banner h1 { margin: 0; font-size: 2.5rem; font-weight: 700; }
+        .category-banner p { margin-top: 0.5rem; font-size: 1.1rem; opacity: 0.9; }
+        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .pagination { display: flex; justify-content: center; margin-top: 2rem; gap: 0.5rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Errol's Blog</h1>
+                <ul class="nav-links">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/data-structure.html" class="active">数据结构专栏</a></li>
+                    <li><a href="/about.html">关于</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="category-banner">
+            <h1>数据结构专栏</h1>
+            <p>深入探索数据结构与算法的世界，提升你的编程技能</p>
+        </div>
+
+        <div id="article-container">
+            <p>正在加载文章...</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Errol's Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/scripts/main-new.js"></script>
+    <script src="src/scripts/markdown-parser.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (window.loadDataStructureArticles) {
+                    window.loadDataStructureArticles();
+                }
+            } catch (err) {
+                console.error('加载出错:', err);
+                const container = document.getElementById('article-container');
+                if (container) container.innerHTML = '<p>加载失败</p>';
+            }
+        });
+    </script>
+</body>
+</html>

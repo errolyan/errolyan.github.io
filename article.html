@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章详情 - Errol's Blog</title>
-    <link rel="stylesheet" href="src/styles/fixed-styles.css">
-    <link rel="stylesheet" href="src/styles/markdown.css">
+    <meta name="description" content="阅读Errol's Blog的技术文章，获取最新的AI编程、机器学习和Web开发知识。">
+    <meta name="keywords" content="技术文章, AI编程, 机器学习, Web开发, 编程教程">
+    <meta name="author" content="Errol">
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
+    <style>
+        .article-meta {
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        .article-categories {
+            margin-bottom: 0.5rem;
+        }
+        .category-tag {
+            background: #2196f3;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+        .tag {
+            background: #e3f2fd;
+            color: #2196f3;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -15,6 +44,8 @@
                 <ul class="nav-links">
                     <li><a href="/">首页</a></li>
                     <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/data-structure.html">数据结构专栏</a></li>
                     <li><a href="/about.html">关于</a></li>
                 </ul>
             </div>
@@ -26,13 +57,21 @@
             <header class="article-header">
                 <h1 class="article-title">文章标题</h1>
                 <p class="article-date">2024-01-01</p>
+                <div class="article-meta">
+                    <div class="article-categories">
+                        <!-- 分类标签将在这里显示 -->
+                    </div>
+                    <div class="article-tags">
+                        <!-- 标签将在这里显示 -->
+                    </div>
+                </div>
             </header>
-            
+
             <div class="article-content" id="article-content">
                 <!-- Markdown内容将在这里渲染 -->
                 <p class="loading">加载中...</p>
             </div>
-            
+
             <div class="article-footer">
                 <a href="/articles.html" class="back-link">返回文章列表</a>
             </div>
@@ -47,5 +86,20 @@
 
     <script src="src/scripts/main.js"></script>
     <script src="src/scripts/markdown-parser.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (window.renderArticleDetails) {
+                    window.renderArticleDetails();
+                }
+            } catch (error) {
+                console.error('渲染文章详情出错:', error);
+                const container = document.getElementById('article-content');
+                if (container) {
+                    container.innerHTML = '<p>加载文章失败，请稍后重试</p>';
+                }
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://errol.github.io/sitemap.xml

@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>关于 - Errol's Blog</title>
-    <link rel="stylesheet" href="src/styles/fixed-styles.css">
+    <meta name="description" content="了解Errol's Blog的作者，一个热爱编程和学习新技术的技术博客。">
+    <meta name="keywords" content="个人博客, 技术分享, 编程, 学习, 技术博客作者">
+    <meta name="author" content="Errol">
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
 </head>
 <body>
     <header>
@@ -15,7 +18,8 @@
                     <li><a href="/">首页</a></li>
                     <li><a href="/articles.html">文章</a></li>
                     <li><a href="/ai-programming.html">AI编程专栏</a></li>
-                    <li><a href="/about.html">关于</a></li>
+                    <li><a href="/data-structure.html">数据结构专栏</a></li>
+                    <li><a href="/about.html" class="active">关于</a></li>
                 </ul>
             </div>
         </nav>
@@ -25,8 +29,31 @@
         <section class="about-section">
             <h2>关于我</h2>
             <div class="about-content">
-                <p>你好，我是Errol。这是我的个人博客，用于分享技术学习、生活感悟和项目经验。</p>
-                <p>我热爱编程、学习新技术，并乐于将所学分享给更多人。</p>
+                <div class="about-profile">
+                    <img src="AboutMe/博客logo.png" alt="博客logo" class="about-image">
+                </div>
+                <div class="about-text">
+                    <p>你好，我是Errol。这是我的个人博客，用于分享技术学习、生活感悟和项目经验。</p>
+                    <p>我热爱编程、学习新技术，并乐于将所学分享给更多人。我的技术领域主要包括人工智能、数据结构与算法、Web开发等。</p>
+                    <p>在这个博客中，我会定期分享我的学习心得、项目经验以及对技术趋势的见解。希望能够帮助到同样热爱技术的你！</p>
+                </div>
+            </div>
+            
+            <div class="contact-section">
+                <h3>联系我</h3>
+                <div class="contact-info">
+                    <img src="AboutMe/联系我.jpg" alt="联系信息" class="contact-image">
+                    <p>如果你有任何问题或者想要交流，欢迎随时联系我！</p>
+                </div>
+            </div>
+            
+            <div class="blog-features">
+                <h3>博客特色栏目</h3>
+                <ul>
+                    <li><a href="/ai-programming.html">AI编程专栏</a> - 专注于人工智能在编程领域的应用与实践</li>
+                    <li><a href="/data-structure.html">数据结构专栏</a> - 深入学习数据结构与算法，提升编程能力</li>
+                    <li><a href="/articles.html">技术文章</a> - 分享各类技术文章和学习心得</li>
+                </ul>
             </div>
         </section>
     </main>
@@ -37,6 +64,8 @@
         </div>
     </footer>
 
+    <script src="src/scripts/utils.js"></script>
+    <script src="src/scripts/search.js"></script>
     <script src="src/scripts/main.js"></script>
 </body>
 </html>

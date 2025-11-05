@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Errol's Blog</title>
-    <link rel="stylesheet" href="src/styles/fixed-styles.css">
+    <title>Errol's Blog - 分享技术、生活和思考</title>
+    <meta name="description" content="Errol's Blog是一个专注于技术分享的个人博客，涵盖AI编程、机器学习、Web开发等领域。">
+    <meta name="keywords" content="技术博客, AI编程, 机器学习, Web开发, 个人博客">
+    <meta name="author" content="Errol">
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
 </head>
 <body>
     <header>
@@ -12,9 +15,10 @@
             <div class="container">
                 <h1 class="logo">Errol's Blog</h1>
                 <ul class="nav-links">
-                    <li><a href="/">首页</a></li>
+                    <li><a href="/" class="active">首页</a></li>
                     <li><a href="/articles.html">文章</a></li>
                     <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/data-structure.html">数据结构专栏</a></li>
                     <li><a href="/about.html">关于</a></li>
                 </ul>
             </div>
@@ -42,6 +46,8 @@
         </div>
     </footer>
 
+    <script src="src/scripts/utils.js"></script>
+    <script src="src/scripts/search.js"></script>
     <script src="src/scripts/main.js"></script>
     <script src="src/scripts/markdown-parser.js"></script>
 </body>

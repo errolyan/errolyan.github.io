@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文章列表 - Errol's Blog</title>
-    <link rel="stylesheet" href="src/styles/fixed-styles.css">
+    <meta name="description" content="Errol's Blog文章列表，涵盖AI编程、机器学习、Web开发等技术文章。">
+    <meta name="keywords" content="技术文章, AI编程, 机器学习, Web开发, 编程教程">
+    <meta name="author" content="Errol">
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
 </head>
 <body>
     <header>
@@ -13,8 +16,9 @@
                 <h1 class="logo">Errol's Blog</h1>
                 <ul class="nav-links">
                     <li><a href="/">首页</a></li>
-                    <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/articles.html" class="active">文章</a></li>
                     <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/data-structure.html">数据结构专栏</a></li>
                     <li><a href="/about.html">关于</a></li>
                 </ul>
             </div>
@@ -25,6 +29,12 @@
         <section class="page-title">
             <h2>所有文章</h2>
         </section>
+
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="搜索文章..." class="search-input">
+            <button id="search-button" class="search-button">搜索</button>
+        </div>
 
         <section class="articles-list">
             <div id="article-container">
@@ -40,7 +50,27 @@
         </div>
     </footer>
 
+    <script src="src/scripts/utils.js"></script>
+    <script src="src/scripts/search.js"></script>
     <script src="src/scripts/main.js"></script>
     <script src="src/scripts/markdown-parser.js"></script>
+    <script>
+        // 页面加载完成后加载文章列表
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化应用
+            initApp();
+
+            // 加载所有文章
+            if (window.loadAllArticles) {
+                window.loadAllArticles().catch(function(error) {
+                    console.error('加载文章失败:', error);
+                    const container = document.getElementById('article-container');
+                    if (container) {
+                        container.innerHTML = '<p>加载文章失败，请稍后重试</p>';
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>

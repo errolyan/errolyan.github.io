@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI编程专栏 - Errol's Blog</title>
-    <link rel="stylesheet" href="src/styles/fixed-styles.css">
+    <meta name="description" content="Errol's Blog的AI编程专栏，专注于人工智能在编程领域的应用与实践。">
+    <meta name="keywords" content="AI编程, 人工智能, 编程教程, 机器学习, 深度学习">
+    <meta name="author" content="Errol">
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
 </head>
 <body>
     <header>
@@ -14,7 +17,8 @@
                 <ul class="nav-links">
                     <li><a href="/">首页</a></li>
                     <li><a href="/articles.html">文章</a></li>
-                    <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/ai-programming.html" class="active">AI编程专栏</a></li>
+                    <li><a href="/data-structure.html">数据结构专栏</a></li>
                     <li><a href="/about.html">关于</a></li>
                 </ul>
             </div>
@@ -45,9 +49,18 @@
     <script src="src/scripts/main.js"></script>
     <script src="src/scripts/markdown-parser.js"></script>
     <script>
-        // 加载AI编程相关文章
-        document.addEventListener('DOMContentLoaded', () => {
-            loadAIProgrammingArticles();
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (window.loadAIProgrammingArticles) {
+                    window.loadAIProgrammingArticles();
+                }
+            } catch (error) {
+                console.error('加载AI编程文章出错:', error);
+                const container = document.getElementById('article-container');
+                if (container) {
+                    container.innerHTML = '<p>加载文章失败，请稍后重试</p>';
+                }
+            }
         });
     </script>
 </body>
