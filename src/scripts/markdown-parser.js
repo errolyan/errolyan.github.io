@@ -5,6 +5,52 @@ class MarkdownParser {
         this.articles = [];
         this.articleDetails = {};
     }
+    
+    // 加载并显示AI编程相关的文章
+    loadAIProgrammingArticles() {
+        const container = document.getElementById('article-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        if (this.articles.length === 0) {
+            container.innerHTML = '<p>暂无文章</p>';
+            return;
+        }
+
+        // 定义AI编程相关的关键词
+        const aiProgrammingKeywords = [
+            'AI编程', '编程', '代码', 'Python', '开发', '框架', 
+            '工具', '技能', 'Claude Code', '编程效率', '学习路线图',
+            '从零开始学习', '工程师', '教程', '实战项目', '开发AI工具'
+        ];
+
+        // 筛选与AI编程相关的文章
+        const aiProgrammingArticles = this.articles.filter(article => {
+            const titleLower = article.title.toLowerCase();
+            return aiProgrammingKeywords.some(keyword => 
+                titleLower.includes(keyword.toLowerCase())
+            );
+        });
+
+        if (aiProgrammingArticles.length === 0) {
+            container.innerHTML = '<p>暂无AI编程相关文章</p>';
+            return;
+        }
+
+        // 按日期倒序排序并渲染文章列表
+        aiProgrammingArticles.forEach(article => {
+            const articleCard = document.createElement('article');
+            articleCard.className = 'article-card';
+            articleCard.innerHTML = `
+                <h3><a href="article.html?id=${article.id}">${article.title}</a></h3>
+                <p class="article-date">${article.date}</p>
+                <p class="article-excerpt">${article.excerpt}</p>
+                <a href="article.html?id=${article.id}" class="read-more">阅读更多</a>
+            `;
+            container.appendChild(articleCard);
+        });
+    }
 
     // 初始化解析器
     async init() {
@@ -268,3 +314,8 @@ const markdownParser = new MarkdownParser();
 
 // 导出供其他模块使用
 window.markdownParser = markdownParser;
+
+// 导出loadAIProgrammingArticles方法到window对象
+window.loadAIProgrammingArticles = function() {
+    markdownParser.loadAIProgrammingArticles();
+};

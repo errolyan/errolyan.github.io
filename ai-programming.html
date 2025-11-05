@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI编程专栏 - Errol's Blog</title>
+    <link rel="stylesheet" href="src/styles/fixed-styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Errol's Blog</h1>
+                <ul class="nav-links">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/about.html">关于</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h2>AI编程专栏</h2>
+            <p>探索人工智能在编程领域的应用与实践</p>
+        </section>
+
+        <section class="articles-list">
+            <h3>专栏文章</h3>
+            <div id="article-container">
+                <!-- 文章列表将通过JavaScript动态生成 -->
+                <p class="loading">加载中...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Errol's Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/markdown-parser.js"></script>
+    <script>
+        // 加载AI编程相关文章
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAIProgrammingArticles();
+        });
+    </script>
+</body>
+</html>
