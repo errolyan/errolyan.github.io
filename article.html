@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章详情 - Errol's Blog</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+    <link rel="stylesheet" href="src/styles/markdown.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Errol's Blog</h1>
+                <ul class="nav-links">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/about.html">关于</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="article-detail">
+            <header class="article-header">
+                <h1 class="article-title">文章标题</h1>
+                <p class="article-date">2024-01-01</p>
+            </header>
+            
+            <div class="article-content" id="article-content">
+                <!-- Markdown内容将在这里渲染 -->
+                <p class="loading">加载中...</p>
+            </div>
+            
+            <div class="article-footer">
+                <a href="/articles.html" class="back-link">返回文章列表</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Errol's Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/markdown-parser.js"></script>
+</body>
+</html>

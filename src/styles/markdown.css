@@ -1,0 +1,249 @@
+/* Markdown样式文件 */
+
+/* Markdown容器 */
+.article-content {
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* 标题样式 */
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+    color: var(--secondary-color);
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+    font-weight: 600;
+}
+
+.article-content h1 {
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+.article-content h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+}
+
+.article-content h3 {
+    font-size: 1.3em;
+}
+
+.article-content h4 {
+    font-size: 1.1em;
+}
+
+.article-content h5 {
+    font-size: 1em;
+}
+
+.article-content h6 {
+    font-size: 0.9em;
+    color: var(--light-text);
+}
+
+/* 段落样式 */
+.article-content p {
+    margin-bottom: 1em;
+    text-align: justify;
+}
+
+/* 强调样式 */
+.article-content strong {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.article-content em {
+    font-style: italic;
+}
+
+.article-content strong em,
+.article-content em strong {
+    font-weight: 600;
+    font-style: italic;
+}
+
+/* 列表样式 */
+.article-content ul,
+.article-content ol {
+    margin-bottom: 1em;
+    padding-left: 1.5em;
+}
+
+.article-content ul li,
+.article-content ol li {
+    margin-bottom: 0.5em;
+}
+
+.article-content ul li {
+    list-style-type: disc;
+}
+
+.article-content ul ul li {
+    list-style-type: circle;
+}
+
+.article-content ul ul ul li {
+    list-style-type: square;
+}
+
+.article-content ol li {
+    list-style-type: decimal;
+}
+
+.article-content ol ol li {
+    list-style-type: lower-alpha;
+}
+
+.article-content ol ol ol li {
+    list-style-type: lower-roman;
+}
+
+/* 链接样式 */
+.article-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.article-content a:hover {
+    text-decoration: underline;
+}
+
+/* 代码样式 */
+.article-content code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #f1f1f1;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.article-content pre {
+    background-color: #282c34;
+    color: #abb2bf;
+    padding: 1.2em;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin-bottom: 1em;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.article-content pre code {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* 引用样式 */
+.article-content blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1em;
+    color: var(--light-text);
+    font-style: italic;
+}
+
+/* 表格样式 */
+.article-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    overflow-x: auto;
+    display: block;
+}
+
+.article-content th,
+.article-content td {
+    padding: 0.75em;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.article-content th {
+    background-color: #f8f8f8;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.article-content tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* 水平线样式 */
+.article-content hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 2em 0;
+}
+
+/* 图片样式 */
+.article-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin: 1em 0;
+    display: block;
+}
+
+/* 滚动条样式（美化代码块滚动条） */
+.article-content pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+.article-content pre::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+
+.article-content pre::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+
+.article-content pre::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .article-content {
+        line-height: 1.7;
+    }
+    
+    .article-content h1 {
+        font-size: 1.6em;
+    }
+    
+    .article-content h2 {
+        font-size: 1.4em;
+    }
+    
+    .article-content h3 {
+        font-size: 1.2em;
+    }
+    
+    .article-content pre {
+        padding: 1em;
+        font-size: 0.85em;
+    }
+    
+    .article-content th,
+    .article-content td {
+        padding: 0.5em;
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文章列表 - Errol's Blog</title>
+    <link rel="stylesheet" href="src/styles/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Errol's Blog</h1>
+                <ul class="nav-links">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/about.html">关于</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-title">
+            <h2>所有文章</h2>
+        </section>
+
+        <section class="articles-list">
+            <div id="article-container">
+                <!-- 文章列表将通过JavaScript动态生成 -->
+                <p class="loading">加载中...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Errol's Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/markdown-parser.js"></script>
+</body>
+</html>
