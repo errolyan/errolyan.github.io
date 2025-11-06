@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(open articles.html)",
+      "Bash(npx http-server)",
+      "Bash(python3 -m http.server 8000)",
+      "Bash(open http://localhost:8000/articles.html)",
+      "Bash(python3 -m http.server 8001)",
+      "Bash(open http://localhost:8001/articles.html)",
+      "Bash(git add src/scripts/markdown-parser.js articles.html src/scripts/main.js src/scripts/search.js src/scripts/utils.js src/styles/optimized-styles.css)",
+      "Bash(git add README.md about.html ai-programming.html article.html index.html data-structure.html robots.txt sitemap.xml)",
+      "Bash(git commit -m \"修复文章列表和详情页面显示问题，优化文章加载逻辑\n\n- 添加loadAllArticles方法用于加载所有文章\n- 修复文章详情页面无法打开的问题\n- 优化文章分类和标签系统\n- 改进错误处理和用户体验\n- 添加搜索功能支持\n- 更新页面样式和导航结构\")",
+      "Bash(git push origin master)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

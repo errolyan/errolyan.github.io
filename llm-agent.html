@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM智能体专栏 - Errol's Blog</title>
+    <meta name="description" content="LLM智能体专栏，系统讲解MCP协议、智能体设计、RAG技术、提示工程等核心技术。">
+    <meta name="keywords" content="LLM, 智能体, MCP, RAG, 提示工程, 微调技术, 教程">
+    <meta name="author" content="Errol">
+    <link rel="stylesheet" href="src/styles/optimized-styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1 class="logo">Errol's Blog</h1>
+                <ul class="nav-links">
+                    <li><a href="/">首页</a></li>
+                    <li><a href="/articles.html">文章</a></li>
+                    <li><a href="/ai-programming.html">AI编程专栏</a></li>
+                    <li><a href="/data-structure.html">数据结构专栏</a></li>
+                    <li><a href="/llm-agent.html" class="active">LLM智能体专栏</a></li>
+                    <li><a href="/about.html">关于</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="page-title">
+            <h2>LLM智能体与MCP技能实战系列教程</h2>
+            <p>系统掌握LLM智能体开发的核心技术栈与实践方法</p>
+        </section>
+
+        <!-- 专栏介绍 -->
+        <section class="column-intro">
+            <div class="intro-content">
+                <h3>专栏简介</h3>
+                <p>本教程系列全面覆盖LLM智能体开发的核心技术栈与实践方法，从底层协议到高级应用，帮助读者系统掌握构建智能、高效、可靠的AI智能体系统。</p>
+                <div class="column-structure">
+                    <h4>课程结构</h4>
+                    <ul>
+                        <li><strong>第一部分：MCP协议基础与实践（第1-4期）</strong> - 掌握MCP协议，构建高级AI智能体的基础</li>
+                        <li><strong>第二部分：LLM微调技术详解（第5-8期）</strong> - 通过微调和对齐技术提升特定任务性能</li>
+                        <li><strong>第三部分：多智能体系统设计（第9-12期）</strong> - 构建协作高效的多智能体系统</li>
+                        <li><strong>第四部分：RAG技术实战与优化（第13-16期）</strong> - 让模型能够引用外部知识，提升输出准确性</li>
+                        <li><strong>第五部分：提示工程技术（第17-20期）</strong> - 通过精心设计的提示词让模型发挥最大潜能</li>
+                        <li><strong>第六部分：AI系统部署与维护（第21-23期）</strong> - 确保AI系统在生产环境长期稳定运行</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜索框 -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="搜索文章..." class="search-input">
+            <button id="search-button" class="search-button">搜索</button>
+        </div>
+
+        <section class="articles-list">
+            <div id="article-container">
+                <!-- 文章列表将通过JavaScript动态生成 -->
+                <p class="loading">加载中...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Errol's Blog. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/markdown-parser.js"></script>
+    <script>
+        // 页面加载完成后加载LLM智能体专栏文章
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化应用
+            initApp();
+
+            // 加载LLM智能体专栏文章
+            async function loadLLMAgentArticles() {
+                const container = document.getElementById('article-container');
+                if (!container) return;
+
+                container.innerHTML = '<p>正在加载文章...</p>';
+
+                try {
+                    // 创建MarkdownParser实例
+                    const parser = new MarkdownParser();
+                    
+                    // 加载LLM智能体专栏的文章
+                    await parser.loadArticlesFromFolder('LLM_Agent_mcp_skills_Tutorial');
+
+                    // 筛选LLM智能体专栏文章
+                    const llmAgentArticles = parser.articles.filter(article => 
+                        article.folder === 'LLM_Agent_mcp_skills_Tutorial'
+                    );
+                    
+                    if (llmAgentArticles.length === 0) {
+                        container.innerHTML = '<p>暂无LLM智能体相关文章</p>';
+                        return;
+                    }
+
+                    // 渲染文章列表
+                    parser.renderArticles(llmAgentArticles, container);
+                } catch (error) {
+                    console.error('加载LLM智能体文章失败:', error);
+                    container.innerHTML = '<p>加载文章失败，请稍后重试</p>';
+                }
+            }
+
+            // 执行加载
+            loadLLMAgentArticles();
+        });
+    </script>
+</body>
+</html>

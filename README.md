@@ -1,6 +1,6 @@
 # Errol's Blog
 
-个人博客网站，支持Markdown文章渲染。
+个人技术博客网站，专注于分享数据结构、算法、AI技术和智能体(Agent)开发教程，支持Markdown文章渲染。
 
 ## 功能特性
 
@@ -11,26 +11,42 @@
 - 简洁美观的UI设计
 - 搜索功能
 - 文章分类和标签系统
+- 多教程系列支持
+- GitHub Pages自动部署
 
 ## 项目结构
 
 ```
-├── articles/         # Markdown文章文件目录
+├── articles/                     # Markdown文章文件目录
+├── DataStructure_Tutorial/       # 数据结构与算法教程
+├── LLM_Agent_mcp_skills_Tutorial/ # LLM智能体与MCP技能教程
+├── AI_Programming_Tutorial/      # AI编程教程
+├── AboutMe/                      # 关于博主信息
+├── data/                         # 数据文件目录
+├── books/                        # 电子书目录
 ├── src/
-│   ├── scripts/    # JavaScript文件
+│   ├── scripts/                  # JavaScript文件
 │   │   ├── utils.js              # 工具函数模块
 │   │   ├── search.js             # 搜索功能模块
-│   │   ├── markdown-parser.js   # Markdown解析器模块
-│   │   └── main.js               # 主入口文件
-│   └── styles/      # CSS样式文件
+│   │   ├── markdown-parser.js    # Markdown解析器模块
+│   │   ├── main.js               # 主入口文件
+│   │   └── main-new.js           # 新版主入口文件
+│   └── styles/                   # CSS样式文件
+│       ├── fixed-styles.css      # 固定样式文件
+│       ├── main.css              # 主样式文件
+│       ├── markdown.css          # Markdown渲染样式
 │       └── optimized-styles.css  # 优化后的样式文件
-├── index.html        # 主页
-├── articles.html     # 文章列表页
-├── article.html      # 文章详情页
-├── ai-programming.html # AI编程专栏
-├── about.html        # 关于页面
-├── package.json      # 项目配置文件
-└── README.md         # 项目说明文件
+├── index.html                    # 主页
+├── articles.html                 # 文章列表页
+├── article.html                  # 文章详情页
+├── ai-programming.html           # AI编程专栏
+├── data-structure.html           # 数据结构专栏
+├── about.html                    # 关于页面
+├── package.json                  # 项目配置文件
+├── OPTIMIZATION_REPORT.md        # 优化报告
+├── robots.txt                    # 搜索引擎爬虫规则
+├── sitemap.xml                   # 网站地图
+└── README.md                     # 项目说明文件
 ```
 
 ## 本地开发
@@ -125,24 +141,24 @@ git push -u origin main
 
 详细优化内容请参见 [OPTIMIZATION_REPORT.md](OPTIMIZATION_REPORT.md) 文件。
 
-## 下一步操作：部署到GitHub
+## 教程系列
 
-### 已完成的步骤
-1. ✅ Git仓库已初始化
-2. ✅ .gitignore文件已配置
-3. ✅ 所有代码文件已添加到Git
-4. ✅ 代码已提交（提交信息："初始提交：博客网站基础代码"）
+### 1. 数据结构与算法教程
+包含从入门到进阶的完整数据结构与算法讲解，涵盖数组、链表、树、图、排序、搜索等经典算法。
 
-### 需要您提供的信息
-为了完成GitHub部署，我需要您提供GitHub仓库URL。请按照以下步骤操作：
+### 2. LLM智能体与MCP技能教程
+专注于大语言模型(LLM)智能体开发、MCP协议应用、提示工程、RAG技术和模型优化等AI前沿技术。
 
-1. 在GitHub上创建一个新仓库
-2. 将仓库URL发送给我，格式为：`https://github.com/您的用户名/您的仓库名.git`
+### 3. AI编程教程
+提供AI应用开发的实用指南和最佳实践。
 
-### 收到URL后我将执行的操作
-1. 添加远程仓库
-2. 推送代码到GitHub
-3. 配置GitHub Pages
-4. 验证网站是否正常访问
+## 部署状态
 
-请尽快提供GitHub仓库URL，以便完成部署过程。
+✅ 已部署到GitHub Pages
+✅ 自动化构建流程已配置
+✅ 响应式设计已优化
+✅ 搜索功能已实现
+
+## 贡献指南
+
+欢迎提交Issue或Pull Request来改进这个博客网站。如果您有任何建议或问题，请随时联系作者。

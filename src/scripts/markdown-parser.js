@@ -153,16 +153,71 @@ class MarkdownParser {
                 ];
             } else if (folder === 'DataStructure_Tutorial') {
                 files = [
-                    '01.入门篇.md',
-                    '02.数组.md',
-                    '03.链表.md',
-                    '04.栈与队列.md',
-                    '05.哈希表.md',
-                    '06.树.md',
-                    '07.图.md',
-                    '08.排序算法.md',
-                    '09.搜索算法.md',
-                    '10.动态规划.md'
+                    '第0期 数据结构与算法教程大纲.md',
+                    '第1期 入门篇.md',
+                    '第2期 数组.md',
+                    '第3期 链表.md',
+                    '第4期 栈.md',
+                    '第5期 队列.md',
+                    '第6期 递归.md',
+                    '第7期 排序.md',
+                    '第8期 二分查找.md',
+                    '第9期 跳表.md',
+                    '第10期 散列表.md',
+                    '第11期 哈希算法.md',
+                    '第12期 二叉树基础.md',
+                    '第13期 红黑树.md',
+                    '第14期 递归树.md',
+                    '第15期 堆.md',
+                    '第16期 图的表示.md',
+                    '第17期 深度和广度优先搜索.md',
+                    '第18期 字符串匹配基础.md',
+                    '第19期 Trie树.md',
+                    '第20期 AC自动机.md',
+                    '第21期 贪心算法.md',
+                    '第22期 分治算法.md',
+                    '第23期 回溯算法.md',
+                    '第24期 动态规划.md',
+                    '第25期 拓扑排序.md',
+                    '第26期 有权图的应用：最短路径.md',
+                    '第27期 位图&布隆过滤器.md',
+                    '第28期 B+树.md',
+                    '第29期 索引.md',
+                    '第30期 并行算法.md',
+                    '第31期 Redis用到的数据结构.md',
+                    '第32期 搜索引擎的理论基础.md',
+                    '第33期 高性能队列Disruptor.md',
+                    '第34期 微服务的鉴权限流接口.md',
+                    '第35期 短网址服务系统.md',
+                    '第36期 权衡选择数据结构和算法.md',
+                    '第37期 leetcode练习题.md'
+                ];
+            } else if (folder === 'LLM_Agent_mcp_skills_Tutorial') {
+                files = [
+                    '第0期 大纲介绍.md',
+                    '第1期 MCP协议概述与基础概念.md',
+                    '第2期 MCP与主流工具的集成：Claude和Cursor使用指南.md',
+                    '第3期 从零开始创建MCP服务器：Python实现指南.md',
+                    '第4期 MCP服务器高级应用与最佳实践.md',
+                    '第5期 监督微调(SFT)：LLM微调基础技术详解.md',
+                    '第6期 直接偏好优化(DPO)：轻量级人类偏好对齐技术.md',
+                    '第7期 基于人类反馈的强化学习(RLHF)：高级偏好对齐方法.md',
+                    '第8期 参数高效微调：LoRA与QLoRA技术详解.md',
+                    '第9期 多智能体系统设计：协作式智能体架构与实现.md',
+                    '第10期 规划型智能体：基于推理与规划的任务解决方法.md',
+                    '第11期 工具使用型智能体：API与外部工具集成指南.md',
+                    '第12期 记忆增强型智能体：长期记忆与学习能力构建.md',
+                    '第13期 RAG技术基础：检索增强生成的原理与架构.md',
+                    '第14期 RAG高级优化：提升检索质量与生成效果的策略.md',
+                    '第15期 RAG高级技术：混合检索与重排序策略.md',
+                    '第16期 RAG系统部署与生产环境优化.md',
+                    '第17期 提示工程基础：设计有效提示词的核心原则.md',
+                    '第18期 高级提示工程技术：推理、多模态与动态提示构建.md',
+                    '第19期 提示工程实践：行业应用案例与实施指南.md',
+                    '第20期 提示工程未来展望：趋势、研究方向与企业级能力建设.md',
+                    '第21期 AI系统部署基础：架构设计与最佳实践.md',
+                    '第22期 模型优化技术：量化、剪枝与知识蒸馏.md',
+                    '第23期 AI系统监控与维护：性能监控、漂移检测与可靠性保障.md'
                 ];
             } else {
                 return;
@@ -217,6 +272,8 @@ class MarkdownParser {
             return 'AI编程';
         } else if (folder === 'DataStructure_Tutorial') {
             return '数据结构';
+        } else if (folder === 'LLM_Agent_mcp_skills_Tutorial') {
+            return 'LLM智能体';
         }
         return '编程';
     }
@@ -227,6 +284,8 @@ class MarkdownParser {
             return ['AI', '编程', '教程'];
         } else if (folder === 'DataStructure_Tutorial') {
             return ['数据结构', '算法', '教程'];
+        } else if (folder === 'LLM_Agent_mcp_skills_Tutorial') {
+            return ['LLM', '智能体', 'MCP', '教程'];
         }
         return ['编程'];
     }
@@ -268,12 +327,20 @@ class MarkdownParser {
     async loadArticleDetails(id, folder) {
         try {
             // 首先确保文章数据已加载
-            if (this.articles.length === 0) {
-                await this.loadAllArticles();
+            if (this.articles.length === 0 || folder) {
+                if (folder === 'LLM_Agent_mcp_skills_Tutorial') {
+                    await this.loadArticlesFromFolder('LLM_Agent_mcp_skills_Tutorial');
+                } else if (folder === 'AI_Programming_Tutorial') {
+                    await this.loadArticlesFromFolder('AI_Programming_Tutorial');
+                } else if (folder === 'DataStructure_Tutorial') {
+                    await this.loadArticlesFromFolder('DataStructure_Tutorial');
+                } else {
+                    await this.loadAllArticles();
+                }
             }
 
-            // 根据ID查找文章，忽略folder参数（因为在所有文章中查找）
-            const articleInfo = this.articles.find(a => a.id === decodeURIComponent(id));
+            // 根据ID和folder查找文章
+            const articleInfo = this.articles.find(a => a.id === decodeURIComponent(id) && (!folder || a.folder === folder));
 
             if (!articleInfo) {
                 throw new Error('文章不存在');
