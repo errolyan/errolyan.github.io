@@ -31,22 +31,23 @@ class MarkdownParser {
             ];
 
             // 模拟文章数据
-            for (const file of allArticles) {
-                const id = file.split('.')[0];
-                const title = file.replace('.md', '');
-                const date = this.generateDateFromId(id);
-                const excerpt = `这是${title}的摘要内容，包含了文章的主要观点和关键信息。`;
-                const category = this.getCategoryFromTitle(title);
-                const tags = this.getTagsFromTitle(title);
+                for (const file of allArticles) {
+                    const id = file.split('.')[0];
+                    const title = file.replace('.md', '');
+                    const date = this.generateDateFromId(id);
+                    const excerpt = `这是${title}的摘要内容，包含了文章的主要观点和关键信息。`;
+                    const category = this.getCategoryFromTitle(title);
+                    const tags = this.getTagsFromTitle(title);
 
-                this.articles.push({
-                    id,
-                    title,
-                    date,
-                    excerpt,
-                    category,
-                    tags
-                });
+                    this.articles.push({
+                        id,
+                        title,
+                        date,
+                        excerpt,
+                        category,
+                        tags,
+                        folder: 'articles' // 设置folder属性
+                    });
             }
 
             // 按日期倒序排序
@@ -92,9 +93,9 @@ class MarkdownParser {
         // 只加载AI编程专栏的文章
         await this.loadArticlesFromFolder('AI_Programming_Tutorial');
 
-        // 筛选AI编程专栏文章
+        // 筛选AI编程专栏文章，使用folder属性确保与其他专栏一致
         const aiProgrammingArticles = this.articles.filter(article => 
-            article.column === 'AI_Programming_Tutorial'
+            article.folder === 'AI_Programming_Tutorial'
         );
         
         if (aiProgrammingArticles.length === 0) {
@@ -118,7 +119,7 @@ class MarkdownParser {
 
         // 筛选数据结构专栏文章
         const dataStructureArticles = this.articles.filter(article => 
-            article.column === 'DataStructure_Tutorial'
+            article.folder === 'DataStructure_Tutorial'
         );
         
         if (dataStructureArticles.length === 0) {
@@ -140,16 +141,29 @@ class MarkdownParser {
             // 根据文件夹确定文件列表
             if (folder === 'AI_Programming_Tutorial') {
                 files = [
-                    '第147期 如何在AI Agent中构建长期记忆（最新技术研究）.md',
-                    '第146期 如何利用Gemini API进行多模态内容生成.md',
-                    '第145期 从零开始搭建一个本地知识库系统.md',
-                    '第144期 如何使用Claude API构建企业级AI应用.md',
-                    '第143期 大模型时代的Prompt Engineering最佳实践.md',
-                    '第142期 使用LangChain构建复杂的AI工作流程.md',
-                    '第141期 如何使用OpenAI API构建多轮对话系统.md',
-                    '第140期 LLM时代的软件开发：机遇与挑战.md',
-                    '第139期 构建AI驱动的代码生成工具：实践指南.md',
-                    '第138期 大模型应用架构设计：从理论到实践.md'
+                    '第0期 AI编程教程大纲.md',
+                    '第1期 从代码到对话：编程的范式革命.md',
+                    '第2期 什么是大型语言模型（LLM）？核心能力解析.md',
+                    '第4期 AI编程的优势、局限性与伦理考量.md',
+                    '第7期 提示工程的基本原则与模式.md',
+                    '第8期 提示词优化与指令工程.md',
+                    '第9期 上下文工程与多轮交互技巧.md',
+                    '第10期 代码生成的应用场景.md',
+                    '第10期 提示词实验与效果评估.md',
+                    '第11期 代码生成提示词的设计原则.md',
+                    '第12期 常见编程语言的提示技巧.md',
+                    '第13期 代码生成的高级技巧.md',
+                    '第14期 调试与问题解决.md',
+                    '第15期 代码质量优化.md',
+                    '第16期 算法与性能优化.md',
+                    '第17期 代码调试与问题诊断.md',
+                    '第18期 开发环境集成：IDE插件与扩展.md',
+                    '第19期 版本控制与AI：智能提交与代码审查.md',
+                    '第20期 文档生成：从代码到知识库.md',
+                    '第21期 测试用例生成：自动化测试流程.md',
+                    '第22期 安全编码实践与AI辅助安全审计.md',
+                    '第23期 敏捷开发与DevOps实践中的AI应用.md',
+                    '第24期 构建个人AI编程系统：提示库与工作流定制.md'
                 ];
             } else if (folder === 'DataStructure_Tutorial') {
                 files = [
@@ -196,9 +210,8 @@ class MarkdownParser {
                 files = [
                     '第0期 大纲介绍.md',
                     '第1期 MCP协议概述与基础概念.md',
-                    '第2期 MCP与主流工具的集成：Claude和Cursor使用指南.md',
-                    '第3期 从零开始创建MCP服务器：Python实现指南.md',
                     '第4期 MCP服务器高级应用与最佳实践.md',
+                    '第16期 RAG系统部署与生产环境优化.md',
                     '第5期 监督微调(SFT)：LLM微调基础技术详解.md',
                     '第6期 直接偏好优化(DPO)：轻量级人类偏好对齐技术.md',
                     '第7期 基于人类反馈的强化学习(RLHF)：高级偏好对齐方法.md',
@@ -226,15 +239,16 @@ class MarkdownParser {
             const baseFolder = 'articles';
             const articleFolder = `${baseFolder}/${folder}`;
             
-            // 模拟文章数据
+            // 为每个文件创建文章数据
             for (const file of files) {
                 const id = file.split('.')[0];
                 const title = file.replace('.md', '');
                 const date = this.generateDateFromId(id);
-                const excerpt = `这是${title}的摘要内容，包含了文章的主要观点和关键信息。`;
+                const excerpt = `这是${title}的摘要内容，包含了文章的核心概念和实践方法。`;
                 const category = this.getCategorizeFromTitle(title, folder);
                 const tags = this.getTagsFromTitle(title, folder);
-                
+
+                // 添加到文章列表，同时设置folder和column属性，确保兼容性
                 this.articles.push({
                     id,
                     title,
@@ -242,7 +256,7 @@ class MarkdownParser {
                     excerpt,
                     category,
                     tags,
-                    folder,
+                    folder: folder,
                     column: folder
                 });
             }
